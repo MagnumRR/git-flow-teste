@@ -7,24 +7,29 @@ print('> Custos Obrigatórios Trabalhistas')
 print('* FGTS (8% do salário bruto mensalmente)')
 print('* INSS - 7,5 % do salário bruto')
 print('* IRRF - 5% do salário bruto')
+print('=========================\n')
 
-salario = float(input('Informe o salário: R$ '))
+lo = 's'
+while lo == 's':
+    salario = float(input('Informe o salário: R$ '))
+    def calc_fgts(salario):
+        return 0.08 * salario
+    c_fgts = calc_fgts(salario)
 
-def calc_fgts(salario):
-    return 0.08 * salario
-
-def calc_inss(salario):
-    return 0.075 * salario
+    def calc_inss(salario):
+        return 0.075 * salario
+    c_inss = calc_inss(salario)    
     
-def calc_irrf(salario):
-    return 0.05 * salario
-
-total = calc_fgts(salario) + calc_inss(salario) + calc_irrf(salario)
-print('-----------------------------------------------------------')
-print(f'\t Valor do FGTS: R$ {round(calc_fgts(salario),2)}')
-print(f'\t Valor do INSS: R$ {round(calc_inss(salario),2)}')
-print(f'\t Valor do IRRF: R$ {round(calc_irrf(salario),2)}')    
-
-print(f'Total de impostos: R$ {round(total,2)}')    
-print('-----------------------------------------------------------')
-print(f'Saldo: R$ {salario - total}') 
+    def calc_irrf(salario):
+        return 0.05 * salario
+    c_irrf = calc_irrf(salario)
+    
+    total = c_fgts + c_inss + c_irrf
+    print('-----------------------------------------------------------')
+    print(f'\t Valor do FGTS: R$ {round(c_fgts,2)}')
+    print(f'\t Valor do INSS: R$ {round(c_inss,2)}')
+    print(f'\t Valor do IRRF: R$ {round(c_irrf,2)}')    
+    print(f'Total de impostos: R$ {round(total,2)}')    
+    print('-----------------------------------------------------------\n')
+    print(f'Saldo: R$ {salario - total}\n') 
+    lo = input('Nova consulta s - Sim / n - Não?\n')
